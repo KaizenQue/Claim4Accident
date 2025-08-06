@@ -1,0 +1,135 @@
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+  }
+  
+  .group:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .ifixlogo {
+    /* background-color: rgb(255 255 255) !important; */
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-top-right-radius: 40px 40px;
+    border-bottom-right-radius: 40px 40px;
+  }
+
+  .user-area {
+    float: right;
+    padding-right: 0;
+    position: relative;
+  }
+  
+@media (orientation: landscape) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media (orientation: portrait) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+  }
+}
+
+@media screen and (min-width: 1149px) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .logo {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .logo {
+    padding: 10px;
+  }
+}
+
+  
+.user-area .user-avatar {
+  cursor: pointer;
+}
+@media (max-width: 400px) {
+  .user-logo {
+    height: 25px;
+    width: 95px;
+  }
+
+  #navbarId {
+    background-image: linear-gradient(to left, #d6d2d2 80%, #d6d2d2 20%);
+  }
+}
+  
+@media (max-width: 900px) {
+  .user-logo {
+    height: 25px;
+    width: 95px;
+  }
+
+  #navbarId {
+    background-image: linear-gradient(to left, #d6d2d2 80%, #d6d2d2 20%);
+  }
+}
+
+@media (max-width: 382px) {
+  .user-logo1 {
+    display: none !important;
+  }
+
+  .sidenav {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .user-logo {
+    height: 25px;
+    width: 95px;
+  }
+}

@@ -1,0 +1,47 @@
+.authentication-background {
+    position: relative;
+    background-color: var(--primary);
+}
+
+.authentication-background:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../public/assets/login-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 10.4;
+}
+
+.shape-1 {
+    animation: anima-trasform-y-one 3s ease infinite alternate;
+
+}
+
+@keyframes anima-trasform-y-one {
+    0% {
+         -webkit-transform: translateY(0);
+         transform: translateY(0);
+     }
+     
+     100% {
+         -webkit-transform: translateY(-30px);
+         transform: translateY(-30px);
+     }
+}
+
+.small{
+    position: absolute;
+    left: 50%;
+    bottom: -41px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    filter: drop-shadow(0px 2px 140px rgba(0, 0, 0, 0.12));
+    animation: anima-trasform-x-extend 2.5s ease infinite alternate;
+    -webkit-animation: anima-trasform-x-extend 5s ease-in-out infinite alternate;
+}
