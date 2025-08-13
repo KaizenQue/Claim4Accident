@@ -48,7 +48,7 @@ export default function Carousel({ items, autoPlay = true, interval = 5000, curr
       </div>
 
       {/* Navigation Arrows - Only show if no external control */}
-      {!onSlideChange && (
+      {/* {!onSlideChange && (
         <>
           <button
             onClick={goToPrevious}
@@ -64,10 +64,10 @@ export default function Carousel({ items, autoPlay = true, interval = 5000, curr
             <ChevronRight className="w-5 h-5" />
           </button>
         </>
-      )}
+      )} */}
 
       {/* Indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+      {/* <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
         {items.map((_, index) => (
           <button
             key={index}
@@ -77,7 +77,7 @@ export default function Carousel({ items, autoPlay = true, interval = 5000, curr
             }`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 } 

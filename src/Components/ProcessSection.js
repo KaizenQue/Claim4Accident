@@ -1,19 +1,22 @@
 import { Headphones, Handshake, DollarSign } from "lucide-react"
+import img1 from '../img/12.svg';
+import img2 from '../img/22.svg';
+import img3 from '../img/32.svg';
 
 export default function ProcessSection() {
   const processes = [
     {
-      icon: Headphones,
+      icon: img1,
       title: "Free Consultation",
       description: "Tell us what happened. We'll tell you how we can help."
     },
     {
-      icon: Handshake,
+      icon: img2,
       title: "We Handle Everything",
       description: "From accident investigation to medical records to insurance negotiations."
     },
     {
-      icon: DollarSign,
+      icon: img3,
       title: "You Get Paid",
       description: "We push for the maximum settlement, & we don't back down."
     }
@@ -21,47 +24,54 @@ export default function ProcessSection() {
 
   return (
     <section className="py-12 lg:py-16 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#337ab7] mb-4">
-            Our Process
-          </h2>
-          <p className="text-gray-600 text-lg">
-            No legal jargon. No chasing us down. Just results.
-          </p>
-        </div>
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
 
-        {/* Process Blocks - Inline Layout */}
-        <div className="flex flex-row gap-4 lg:gap-8 justify-center">
-          {processes.map((process, index) => {
-            const IconComponent = process.icon
-            return (
-              <div
-                key={index}
-                className="flex-1 bg-[#EBF5F8] p-4 lg:p-8 rounded-lg transform rotate-1 hover:rotate-0 transition-transform duration-300"
-                style={{
-                  clipPath: 'polygon(0 10%, 90% 0, 100% 90%, 10% 100%)'
-                }}
-              >
-                <div className="text-center">
-                  <div className="flex justify-center mb-3 lg:mb-6">
-                    <div className="w-10 h-10 lg:w-16 lg:h-16 bg-[#D9534F] rounded-full flex items-center justify-center">
-                      <IconComponent className="w-5 h-5 lg:w-8 lg:h-8 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-sm lg:text-xl font-bold text-gray-800 mb-2 lg:mb-4">
-                    {process.title}
-                  </h3>
-                  <p className="text-gray-600 text-xs lg:text-sm leading-relaxed">
-                    {process.description}
-                  </p>
+      {/* Header */}
+      <div className="lg:w-1/3 text-left lg:sticky top-10">
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#0A1F8F] mb-4">
+          {/* Our Process */}
+          <span className="text-[#0A1F8F]">Our</span>{" "}
+                <span className="text-[#D9534F]">Process</span>
+        </h2>
+        <p className="text-gray-600 text-lg">
+          No legal jargon. No chasing us down. Just results.
+        </p>
+      </div>
+
+      {/* Process Blocks */}
+      <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {processes.map((process, index) => (
+          <div
+            key={index}
+            className="bg-[#EBF5F8] p-3 xl:p-4 rounded-lg transform rotate-1 hover:rotate-0 transition-transform duration-300"
+            style={{
+              clipPath: 'polygon(0 10%, 90% 0, 100% 90%, 10% 100%)',
+            }}
+          >
+            <div className="text-center">
+              <div className="flex justify-center mb-2 xl:mb-4">
+                <div className="w-10 h-10 xl:w-12 xl:h-12 bg-[#D9534F] rounded-full flex items-center justify-center">
+                  <img 
+                    src={process.icon} 
+                    alt={process.title}
+                    className="w-5 h-5 xl:w-6 xl:h-6 text-white" 
+                  />
                 </div>
               </div>
-            )
-          })}
-        </div>
+              <h3 className="text-sm xl:text-base font-bold text-gray-800 mb-1 xl:mb-2">
+                {process.title}
+              </h3>
+              <p className="text-gray-600 text-xs xl:text-sm leading-relaxed">
+                {process.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   )
 } 

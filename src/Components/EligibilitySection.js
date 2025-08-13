@@ -34,7 +34,9 @@ export default function EligibilitySection() {
             {/* Header */}
             <div className="mb-8">
               <h2 className="text-3xl lg:text-4xl font-bold text-[#2C3E50] mb-4">
-                Who Can File A Claim?
+                {/* Who Can File A Claim? */}
+                <span className="text-[#0A1F8F]">Who Can</span>{" "}
+                <span className="text-[#D9534F]">File A Claim?</span>
               </h2>
               <p className="text-lg font-medium text-[#D9534F]">
                 You're likely eligible if:
@@ -47,12 +49,12 @@ export default function EligibilitySection() {
               return (
                 <div
                   key={index}
-                  className="bg-[#347AB7] rounded-xl p-6 flex items-center space-x-4"
+                  className="bg-[#0A1F8F] rounded-[100px] p-6 flex items-center space-x-4"
                 >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <IconComponent className="w-6 h-6 text-[#347AB7]" />
+                  <div className="w-12 h-12 bg-white rounded-[100px] flex items-center justify-center flex-shrink-0">
+                    <IconComponent className="w-6 h-6 text-[#0A1F8F]" />
                   </div>
-                  <p className="text-white text-sm lg:text-base font-medium leading-relaxed">
+                  <p className="text-white text-sm lg:text-base font-medium leading-relaxed mb-0">
                     {criteria.text}
                   </p>
                 </div>
@@ -67,12 +69,12 @@ export default function EligibilitySection() {
               return (
                 <div
                   key={index + 2}
-                  className="bg-[#347AB7] rounded-xl p-6 flex items-center space-x-4"
+                  className="bg-[#0A1F8F] rounded-[100px] p-6 flex items-center space-x-4"
                 >
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <IconComponent className="w-6 h-6 text-[#347AB7]" />
+                    <IconComponent className="w-6 h-6 text-[#0A1F8F]" />
                   </div>
-                  <p className="text-white text-sm lg:text-base font-medium leading-relaxed">
+                  <p className="text-white text-sm lg:text-base font-medium leading-relaxed mb-0">
                     {criteria.text}
                   </p>
                 </div>

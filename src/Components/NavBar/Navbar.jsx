@@ -1,89 +1,103 @@
-import React, { useState } from "react";
-import { IoStatsChart, IoWarning, IoPerson, IoLogOut } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
-import "./Navbar.css";
+import React, { useState } from 'react';
+import logoImage from '../img/claim4acc logo.png';
+import Call from "../img/Frame 33.png"
 
-const Navbar = () => {
-  const navigate = useNavigate();
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isKpiOpen, setIsKpiOpen] = useState(false);
+import logo from "../img/claim4acc logo.png"
+function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-  const toggleNavbar = () => setIsCollapsed((prev) => !prev);
-  const toggleKpiMenu = () => setIsKpiOpen((prev) => !prev);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-  const navLinks = [
-    {
-      href: "./Dashboards",
-      title: "Anomaly Detection",
-      icon: <IoWarning className="h-6 w-6 text-gray-600" />,
-    },
-    {
-      href: "./Main",
-      title: "Procurement Overview",
-      icon: <IoStatsChart className="h-6 w-6 text-gray-600" />,
-    }
-  ];
-
-  const userLinks = [
-    {
-      title: "User Profile",
-      icon: <IoPerson className="h-6 w-6 text-gray-600" />,
-    },
-    {
-      href: "./",
-      title: "Logout",
-      icon: <IoLogOut className="h-6 w-6 text-gray-600" />,
-    }
-  ];
-
-  const renderNavLink = (link) => (
-    <a
-      href={link.href}
-      title={link.title}
-      className="flex items-center justify-center lg:justify-start text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-lg p-2 no-underline"
-    >
-      {link.icon}
-      {!isCollapsed && <span className="ml-2">{link.title}</span>}
-    </a>
-  );
+  const toggleServices = () => {
+    setIsServicesOpen(!isServicesOpen);
+  };
 
   return (
-    <div
-      className={`bg-white bg-gray-50 shadow-lg hover:shadow-xl transition-shadow duration-300 shadow-blue-500 ${
-        isCollapsed ? "w-20" : "w-30"
-      } h-screen flex flex-col rounded-2xl`}
-    >
-      <div className="flex items-center justify-center lg:justify-center py-2 border-b">
-        <span className="ml-2">
-          <div className="ifixlogo">
-            <div className="logo">
-              <img
-                className="user-avatar user-logo pointer"
-                src="https://media.licdn.com/dms/image/v2/D560BAQEOGgWaFutD0w/company-logo_200_200/company-logo_200_200/0/1736840866682/terrascope_climatetech_logo?e=2147483647&v=beta&t=G5c6MpF1Q0qIsGa1N0FFKizfMvorRJ-N1HkI4Jv1HUs"
-                height="40"
-                width="40"
-                onClick={toggleNavbar}
-                style={{ cursor: "pointer" }}
-                alt="Logo"
-              />
-            </div>
+    <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+      <div className="max-w-6xl mx-auto px-5 flex items-center h-16">
+        {/* Logo */}
+        <div className="0A1F8F">
+          <img src={logo} alt="Logo" className="h-8 w-auto" />
+        </div>
+
+        {/* Hamburger Menu for Mobile */}
+        <div
+          className={`md:hidden flex flex-col cursor-pointer p-1 ml-auto ${isMenuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+        >
+          <span className={`w-6 h-0.5 bg-[#2C3E50] mb-1 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-[#2C3E50] mb-1 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-[#2C3E50] transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+        </div>
+
+        {/* Navigation Links - Centered */}
+        <div className="hidden md:flex md:items-center md:space-x-8 flex-1 justify-center">
+          <a href="#" className="text-[#0A1F8F] font-bold hover:text-[#0A1F8F] transition-colors duration-300 no-underline">Home</a>
+          <a href="#" className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 no-underline">About Us</a>
+
+          {/* Services Dropdown */}
+          <div className="relative">
+            <a
+              href="#"
+              className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 flex items-center no-underline"
+              onClick={toggleServices}
+            >
+              Services
+              <span className="text-[#F1C40F] text-xs ml-1">▼</span>
+            </a>
+            {isServicesOpen && (
+              <div className="absolute top-full left-0 bg-white shadow-lg rounded-md min-w-[150px] z-50 bg-gray-50">
+                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 1</a>
+                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 2</a>
+                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 3</a>
+              </div>
+            )}
           </div>
-        </span>
-      </div>
 
-      <nav className="mt-6 flex flex-col space-y-4 px-2 lg:px-4">
-        {navLinks.map((link, index) => (
-          <React.Fragment key={index}>{renderNavLink(link)}</React.Fragment>
-        ))}
-      </nav>
+          <a href="#" className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Contact Us</a>
+        </div>
 
-      <div className="mt-auto mb-4 flex flex-col space-y-4 px-2 lg:px-4">
-        {userLinks.map((link, index) => (
-          <React.Fragment key={index}>{renderNavLink(link)}</React.Fragment>
-        ))}
+        {/* Call to Action Button */}
+        <div className="hidden md:0A1F8F">
+          {/* <button className="bg-[#D9534F] text-white border-none rounded py-2 px-4 cursor-pointer transition-colors duration-300 hover:bg-[#c0392b] flex flex-col items-center min-w-[140px]">
+            <span className="text-xs font-normal uppercase leading-none">CALL NOW</span>
+            <span className="text-base font-bold leading-tight">888 201-1350</span>
+          </button> */}
+          <img src={Call} alt="icon" className='h-10 w-30 object-cover' />
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-md transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
+          <a href="#" className="block py-4 px-5 text-[#0A1F8F] font-bold border-b border-gray-100 no-underline">Home</a>
+          <a href="#" className="block py-4 px-5 text-gray-500 border-b border-gray-100 no-underline">About Us</a>
+
+          {/* Mobile Services Dropdown */}
+          <div className="relative">
+            <a
+              href="#"
+              className="block py-4 px-5 text-gray-500 border-b border-gray-100 flex items-center no-underline"
+              onClick={toggleServices}
+            >
+              Services
+              <span className="text-[#F1C40F] text-xs ml-1">▼</span>
+            </a>
+            {isServicesOpen && (
+              <div className="bg-gray-50">
+                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 1</a>
+                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 2</a>
+                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 3</a>
+              </div>
+            )}
+          </div>
+
+          <a href="#" className="block py-4 px-5 text-gray-500 border-b border-gray-100 no-underline">Contact Us</a>
+        </div>
       </div>
-    </div>
+    </nav>
   );
-};
+}
 
-export default Navbar;
+export default Navbar; 

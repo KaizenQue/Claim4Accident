@@ -1,96 +1,56 @@
 import React, { useState } from 'react';
 import logoImage from '../img/Logo.svg';
 
+import logo from "../img/MainLogo.svg"
+// import Call from "../img/Frame 33.png"
+
+
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const handlePhoneCall = () => {
+    window.location.href = "tel:(888) 202 1350"
+  }
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const handleLogoClick = () => {
+    window.location.href = "/"
+  }
 
-  const toggleServices = () => {
-    setIsServicesOpen(!isServicesOpen);
-  };
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-6xl mx-auto px-5 flex items-center h-16">
-        {/* Logo */}
-        <div className="flex items-center flex-shrink-0">
-          <img src={logoImage} alt="Logo" className="h-8 w-auto" />
-        </div>
-
-        {/* Hamburger Menu for Mobile */}
-        <div 
-          className={`md:hidden flex flex-col cursor-pointer p-1 ml-auto ${isMenuOpen ? 'active' : ''}`} 
-          onClick={toggleMenu}
-        >
-          <span className={`w-6 h-0.5 bg-[#2C3E50] mb-1 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-[#2C3E50] mb-1 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-[#2C3E50] transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+      <div className="max-w-6xl mx-auto px-5 flex items-center h-20">
+        {/* Logo - Centered on mobile, left-aligned on desktop */}
+        <div className="flex items-center justify-center md:justify-start flex-1 md:flex-none" onClick={handleLogoClick}>
+          <img src={logo} alt="Logo" className="h-8 w-auto"  />
         </div>
 
         {/* Navigation Links - Centered */}
         <div className="hidden md:flex md:items-center md:space-x-8 flex-1 justify-center">
-          <a href="#" className="text-[#337ab7] font-bold hover:text-[#337ab7] transition-colors duration-300 no-underline">Home</a>
-          <a href="#" className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 no-underline">About Us</a>
-          
-          {/* Services Dropdown */}
-          <div className="relative">
-            <a 
-              href="#" 
-              className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 flex items-center no-underline"
-              onClick={toggleServices}
-            >
-              Services
-              <span className="text-[#F1C40F] text-xs ml-1">▼</span>
-            </a>
-            {isServicesOpen && (
-              <div className="absolute top-full left-0 bg-white shadow-lg rounded-md min-w-[150px] z-50 bg-gray-50">
-                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 1</a>
-                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 2</a>
-                <a href="#" className="block py-3 px-5 text-gray-500 hover:bg-gray-100 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Service 3</a>
-              </div>
-            )}
-          </div>
-          
-          <a href="#" className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Contact Us</a>
+          {/* <a href="#" className="text-gray-500 hover:text-[#2C3E50] transition-colors duration-300 no-underline">Contact Us</a> */}
         </div>
 
         {/* Call to Action Button */}
         <div className="hidden md:flex items-center flex-shrink-0">
-          <button className="bg-[#D9534F] text-white border-none rounded py-2 px-4 cursor-pointer transition-colors duration-300 hover:bg-[#c0392b] flex flex-col items-center min-w-[140px]">
-            <span className="text-xs font-normal uppercase leading-none">CALL NOW</span>
-            <span className="text-base font-bold leading-tight">888 201-1350</span>
+          <button 
+            onClick={handlePhoneCall}
+            className="flex items-center space-x-3 bg-white border-none rounded-lg py-2 px-3 cursor-pointer transition-all duration-300"
+          >
+            {/* Red circle with phone icon */}
+            <div className="bg-[#D9534F] rounded-full p-2 flex items-center justify-center">
+              <svg 
+                className="w-4 h-4 text-white transform rotate-12" 
+                fill="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </div>
+            
+            {/* Text content */}
+            <div className="flex flex-col items-start">
+              <span className="text-[#D9534F] text-xs font-bold uppercase tracking-wide leading-none">CALL US NOW</span>
+              <span className="text-[#2C3E50] text-sm font-bold leading-tight">(888) 202-1350</span>
+            </div>
           </button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        <div className={`md:hidden absolute top-16 left-0 right-0 bg-white shadow-md transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
-          <a href="#" className="block py-4 px-5 text-[#337ab7] font-bold border-b border-gray-100 no-underline">Home</a>
-          <a href="#" className="block py-4 px-5 text-gray-500 border-b border-gray-100 no-underline">About Us</a>
-          
-          {/* Mobile Services Dropdown */}
-          <div className="relative">
-            <a 
-              href="#" 
-              className="block py-4 px-5 text-gray-500 border-b border-gray-100 flex items-center no-underline"
-              onClick={toggleServices}
-            >
-              Services
-              <span className="text-[#F1C40F] text-xs ml-1">▼</span>
-            </a>
-            {isServicesOpen && (
-              <div className="bg-gray-50">
-                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 1</a>
-                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 2</a>
-                <a href="#" className="block py-3 px-8 text-gray-500 hover:bg-gray-100 no-underline">Service 3</a>
-              </div>
-            )}
-          </div>
-          
-          <a href="#" className="block py-4 px-5 text-gray-500 border-b border-gray-100 no-underline">Contact Us</a>
         </div>
       </div>
     </nav>

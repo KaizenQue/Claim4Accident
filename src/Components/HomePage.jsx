@@ -1,5 +1,5 @@
 import Navbar from "./NavBar";
-import HeroSection from "./HeroSection";
+import HeroSection3 from "./HeroSection3";
 import FeaturesSection from "./FeaturesSection";
 import ServicesSection from "./ServicesSection";
 import ProcessSection from "./ProcessSection";
@@ -8,21 +8,22 @@ import LocationsSection from "./LocationsSection";
 import FAQSection from "./FAQSection";
 import Footer from "./Footer";
 import Component2 from './Component2'
-
+import LocationCard from './LocationCard'
 const HomePage = ()=>{
 
     return(
         <>
         <Navbar/>
-        <HeroSection/>
+        <HeroSection3/>
         <FeaturesSection/>
         <ServicesSection/>
         <ProcessSection/>
         <EligibilitySection/>
-        <div id="component2">
+        {/* <div id="component2">
           <Component2/>
-        </div>
+        </div> */}
         {/* <LocationsSection/> */}
+        <LocationCard/>
         <FAQSection/>
         <Footer/>
         </>

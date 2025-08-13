@@ -1,13 +1,15 @@
-import { useState } from "react"
-import { ChevronUp, ChevronDown } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
+import { ChevronUp, ChevronDown, ArrowUp } from "lucide-react"
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0)
+  const topRef = useRef(null)
 
-  const faqs = [
+  const faqData = [
     {
       question: "How do I know if I qualify?",
-      answer: "Complete the form. A legal team will assess your situation based on your exposure and health condition."
+      answer: "Complete the form. A legal team will assess your situation based on your exposure and health condition.",
+      hasButton: true
     },
     {
       question: "Do I have to pay anything now?",
@@ -23,54 +25,122 @@ export default function FAQSection() {
     }
   ]
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? -1 : index)
-  }
+  const [activeIndex, setActiveIndex] = useState(null); // No dropdown open by default
+  
+  const toggle = (idx) => {
+    setActiveIndex(idx === activeIndex ? null : idx);
+  };
 
+  const scrollToTop = () => {
+    console.log("Scroll to top function called"); // Debug log
+    
+    // Try multiple scrolling methods for better compatibility
+    try {
+      // Method 1: Scroll to top of document
+      document.documentElement.scrollTop = 0;
+      
+      // Method 2: Scroll to top of body
+      document.body.scrollTop = 0;
+      
+      // Method 3: Use window.scrollTo as fallback
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      console.log("Scrolling completed");
+    } catch (error) {
+      console.error("Error scrolling to top:", error);
+      
+      // Fallback: Force scroll to top
+      window.scrollTo(0, 0);
+    }
+  };
+
+  // Alternative method: Scroll to a specific element
+  const scrollToTopElement = () => {
+    console.log("Alternative scroll method called");
+    
+    // Try to find the navbar or first element to scroll to
+    const navbar = document.querySelector('nav') || document.querySelector('header') || document.body.firstElementChild;
+    
+    if (navbar) {
+      navbar.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+      console.log("Scrolled to navbar element");
+    } else {
+      // Fallback to window scroll
+      window.scrollTo(0, 0);
+      console.log("Used fallback scroll method");
+    }
+  };
+  
   return (
-    <section className="py-12 lg:py-16 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8">
-            <span className="text-[#337ab7]">Frequently Asked</span>{" "}
-            <span className="text-[#D9534F]">Questions</span>
-          </h2>
-        </div>
+    <section
+      className="py-12 px-25 sm:px-4 md:px-8 lg:px-16 w-[70vw] mx-auto"
+      style={{ fontFamily: "Quicksand, sans-serif" }}
+    >
+      {/* Title */}
+      <h2 className="text-[32px] sm:text-[40px] font-semibold text-[#0A1F8F] mb-6 capitalize leading-none">
+        Frequently Asked{" "}
+        <span className="text-[#D14836] font-semibold capitalize">
+          Questions
+        </span>
+      </h2>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`border-b border-gray-200 ${
-                openIndex === index ? 'bg-gray-50' : 'bg-white'
-              }`}
+      {/* Accordion */}
+      <div className="space-y-4">
+        {faqData.map((item, idx) => (
+          <div
+            key={idx}
+            className="border border-gray-200 rounded overflow-hidden"
+          >
+            <button
+              onClick={() => toggle(idx)}
+              className={`w-full text-left px-4 py-3 flex justify-between items-center ${
+                activeIndex === idx ? "bg-[#F4F6FC]" : "bg-white"
+              } transition`}
+              style={{ fontFamily: "Quicksand, sans-serif" }}
             >
-              <button
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
-                onClick={() => toggleFAQ(index)}
+              <span className="text-[#0A1F8F] text-[20px] sm:text-[24px] font-semibold leading-normal">
+                {item.question}
+              </span>
+              <span className="text-[18px] font-light select-none">
+                <ChevronDown
+                  className={`w-5 h-5 transform transition-transform duration-300 
+      ${activeIndex === idx ? "rotate-180 text-[#EDC14A]" : "text-[#0A1F8F]"}`}
+                />
+              </span>
+            </button>
+            {activeIndex === idx && (
+              <div
+                className="px-4 pb-4 pt-1 text-[#757575] text-[18px] sm:text-[20px] font-medium leading-normal bg-[#F4F6FC]"
+                style={{ fontFamily: "Quicksand, sans-serif" }}
               >
-                <span className="text-lg font-medium text-gray-800">
-                  {faq.question}
-                </span>
-                {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-[#D9534F]" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-[#337ab7]" />
+                <p className="mb-4">{item.answer}</p>
+                {item.hasButton && (
+                  <button
+                    onClick={() => {
+                      console.log("Button clicked!");
+                      scrollToTop();
+                      // Also try the alternative method after a short delay
+                      setTimeout(() => {
+                        scrollToTopElement();
+                      }, 100);
+                    }}
+                    className="inline-flex items-center space-x-2 bg-[#D14836] hover:bg-[#B03A2A] text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg"
+                  >
+                    {/* <ArrowUp className="w-4 h-4" /> */}
+                    <span>See If You Qualify</span>
+                  </button>
                 )}
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
-  )
+  );
 } 

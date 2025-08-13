@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Review Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1e40af;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .header p {
+            margin: 8px 0 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .thank-you {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .thank-you h2 {
+            color: #1e40af;
+            margin-bottom: 16px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .thank-you p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .next-steps {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .next-steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0ea5e9;
+            border-radius: 2px;
+        }
+        .next-steps h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .next-steps ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        .next-steps li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            color: #334155;
+        }
+        .next-steps li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #059669;
+            font-weight: bold;
+        }
+        .contact-info {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #fbbf24;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #f59e0b;
+            border-radius: 2px;
+        }
+        .contact-info h3 {
+            color: #92400e;
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .phone-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #dc2626;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+        .footer {
+            background-color: #f1f5f9;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #64748b;
+        }
+        .disclaimer {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .disclaimer ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+        .disclaimer li {
+            margin-bottom: 6px;
+        }
+        .status-badge {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✅ Case Review Received</h1>
+            <p>Thank you for submitting your case review</p>
+        </div>
+        
+        <div class="content">
+            <div class="status-badge">✓ Confirmed</div>
+            
+            <div class="thank-you">
+                <h2>Thank You, {{full_name}}!</h2>
+                <p>We have successfully received your motor vehicle accident case review submission. Our legal team will review your information and contact you within 24 hours.</p>
+            </div>
+
+            <div class="next-steps">
+                <h3>📋 What Happens Next?</h3>
+                <ul>
+                    <li><strong>Case Review:</strong> Our legal experts will analyze your case details</li>
+                    <li><strong>Initial Contact:</strong> You'll receive a call within 24 hours</li>
+                    <li><strong>Free Consultation:</strong> We'll discuss your legal options</li>
+                    <li><strong>Next Steps:</strong> We'll guide you through the process</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <h3>📞 Need Immediate Assistance?</h3>
+                <p>If you need to speak with someone right away, please call us:</p>
+                <a href="tel:8882021350" class="phone-number">(888) 202-1350</a>
+                <p><strong>Available 24/7 for urgent matters</strong></p>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="tel:8882021350" class="cta-button">Call Now</a>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>Important Information:</strong></p>
+                <ul>
+                    <li>This is not a guarantee of representation</li>
+                    <li>Case evaluation is free and confidential</li>
+                    <li>No upfront fees required</li>
+                    <li>We only get paid if you win your case</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Motor Vehicle Accident Legal Services</strong></p>
+            <p>You Focus On Healing, We'll Handle The Fight</p>
+            <p>Confirmation sent on {{submission_date}} at {{submission_time}}</p>
+        </div>
+    </div>
+</body>
+</html> 
